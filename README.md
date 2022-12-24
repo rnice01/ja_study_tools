@@ -1,4 +1,4 @@
-# DoSite
+# JaStudyTools
 
 To start your Phoenix server:
 

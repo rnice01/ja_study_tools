@@ -1,12 +1,12 @@
-defmodule DoSiteWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :do_site
+defmodule JaStudyToolsWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :ja_study_tools
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_do_site_key",
+    key: "_ja_study_tools_key",
     signing_salt: "6p4RFmEz"
   ]
 
@@ -18,7 +18,7 @@ defmodule DoSiteWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :do_site,
+    from: :ja_study_tools,
     gzip: false,
     only: ~w(assets fonts images favicon.ico robots.txt)
 
@@ -45,5 +45,5 @@ defmodule DoSiteWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug DoSiteWeb.Router
+  plug JaStudyToolsWeb.Router
 end

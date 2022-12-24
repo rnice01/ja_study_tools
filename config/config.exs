@@ -8,10 +8,10 @@
 import Config
 
 # Configures the endpoint
-config :do_site, DoSiteWeb.Endpoint,
+config :ja_study_tools, JaStudyToolsWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: DoSiteWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: DoSite.PubSub,
+  render_errors: [view: JaStudyToolsWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: JaStudyTools.PubSub,
   live_view: [signing_salt: "AGg4Gy0P"]
 
 # Configures the mailer
@@ -21,7 +21,7 @@ config :do_site, DoSiteWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :do_site, DoSite.Mailer, adapter: Swoosh.Adapters.Local
+config :ja_study_tools, JaStudyTools.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

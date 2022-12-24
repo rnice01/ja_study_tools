@@ -1,6 +1,6 @@
-defmodule DoSite do
+defmodule JaStudyTools do
   @moduledoc """
-  DoSite keeps the contexts that define your domain
+  JaStudyTools keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

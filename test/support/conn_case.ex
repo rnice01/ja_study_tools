@@ -1,4 +1,4 @@
-defmodule DoSiteWeb.ConnCase do
+defmodule JaStudyToolsWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule DoSiteWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use DoSiteWeb.ConnCase, async: true`, although
+  by setting `use JaStudyToolsWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,12 +22,12 @@ defmodule DoSiteWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import DoSiteWeb.ConnCase
+      import JaStudyToolsWeb.ConnCase
 
-      alias DoSiteWeb.Router.Helpers, as: Routes
+      alias JaStudyToolsWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint DoSiteWeb.Endpoint
+      @endpoint JaStudyToolsWeb.Endpoint
     end
   end
 

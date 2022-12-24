@@ -1,3 +1,3 @@
-defmodule DoSiteWeb.PageViewTest do
-  use DoSiteWeb.ConnCase, async: true
+defmodule JaStudyToolsWeb.PageViewTest do
+  use JaStudyToolsWeb.ConnCase, async: true
 end

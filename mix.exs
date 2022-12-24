@@ -1,9 +1,9 @@
-defmodule DoSite.MixProject do
+defmodule JaStudyTools.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :do_site,
+      app: :ja_study_tools,
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule DoSite.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {DoSite.Application, []},
+      mod: {JaStudyTools.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

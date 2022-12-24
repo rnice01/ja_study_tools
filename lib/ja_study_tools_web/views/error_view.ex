@@ -1,5 +1,5 @@
-defmodule DoSiteWeb.ErrorView do
-  use DoSiteWeb, :view
+defmodule JaStudyToolsWeb.ErrorView do
+  use JaStudyToolsWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

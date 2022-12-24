@@ -1,5 +1,5 @@
-defmodule DoSiteWeb.LayoutView do
-  use DoSiteWeb, :view
+defmodule JaStudyToolsWeb.LayoutView do
+  use JaStudyToolsWeb, :view
 
   # Phoenix LiveDashboard is available only in development by default,
   # so we instruct Elixir to not warn if the dashboard route is missing.

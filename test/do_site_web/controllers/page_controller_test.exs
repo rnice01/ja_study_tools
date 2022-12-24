@@ -1,5 +1,5 @@
-defmodule DoSiteWeb.PageControllerTest do
-  use DoSiteWeb.ConnCase
+defmodule JaStudyToolsWeb.PageControllerTest do
+  use JaStudyToolsWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

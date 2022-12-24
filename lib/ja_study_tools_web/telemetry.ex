@@ -1,4 +1,4 @@
-defmodule DoSiteWeb.Telemetry do
+defmodule JaStudyToolsWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -42,7 +42,7 @@ defmodule DoSiteWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {DoSiteWeb, :count_users, []}
+      # {JaStudyToolsWeb, :count_users, []}
     ]
   end
 end

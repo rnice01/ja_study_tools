@@ -1,4 +1,4 @@
-defmodule DoSiteWeb.ErrorHelpers do
+defmodule JaStudyToolsWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -39,9 +39,9 @@ defmodule DoSiteWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(DoSiteWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(JaStudyToolsWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(DoSiteWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(JaStudyToolsWeb.Gettext, "errors", msg, opts)
     end
   end
 end
