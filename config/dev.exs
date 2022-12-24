@@ -16,7 +16,8 @@ config :do_site, DoSiteWeb.Endpoint,
   secret_key_base: "aMT2dNJpvjcFrOPPfA24Gq9RzxsBX5ewX2Pbh78gk09CvGDwCOol6lI8H0cl008B",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    node: ["./build.js", "--watch", cd: Path.expand("../assets/", __DIR__)],
+    npx: ["tailwindcss", "-i", "./src/main.css", "-o", "../priv/static/assets/main.css", "--watch", cd: Path.expand("../assets/", __DIR__)]
   ]
 
 # ## SSL Support
