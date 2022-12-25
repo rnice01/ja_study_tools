@@ -1,8 +1,9 @@
 module Main exposing (..)
 
 import Browser
-import Html exposing (Html, a, br, button, div, footer, h1, h2, h3, hr, img, li, nav, p, section, span, text, ul)
-import Html.Attributes exposing (class, src, style)
+import Html exposing (Attribute, Html, a, br, button, div, footer, h1, h2, h3, hr, img, li, nav, p, section, span, text, ul)
+import Html.Attributes exposing (attribute, class, src, style)
+import Html.Events exposing (onClick)
 import Views.Nav exposing (navigation)
 
 
@@ -24,12 +25,30 @@ init =
 
 
 type Msg
-    = NoOp
+    = Correct
+    | InCorrect
+    | NoOp
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( model, Cmd.none )
+    case msg of
+        Correct ->
+            let
+                _ =
+                    Debug.log "" "Clicked the correct option"
+            in
+            ( model, Cmd.none )
+
+        InCorrect ->
+            let
+                _ =
+                    Debug.log "" "Clicked the incorrect option"
+            in
+            ( model, Cmd.none )
+
+        NoOp ->
+            ( model, Cmd.none )
 
 
 
@@ -46,7 +65,8 @@ main =
         }
 
 
-squareTileButton label_ class_ =
+squareTileButton : String -> String -> Msg -> Html Msg
+squareTileButton label_ class_ msg =
     let
         classes =
             [ "bg-blue-500 hover:bg-blue-600"
@@ -59,7 +79,7 @@ squareTileButton label_ class_ =
                 |> String.join " "
     in
     button
-        [ class classes ]
+        [ class classes, onClick msg ]
         [ text label_ ]
 
 
@@ -93,12 +113,47 @@ squareTileButton label_ class_ =
 -}
 
 
-popupChoice =
-    div [ class "relative border-4 border-blue-400 h-12 w-12" ]
-        [ div [ class "absolute top-0 flex", style "top" "-67px", style "left" "-51px" ]
-            [ squareTileButton "を" "mr-2"
-            , squareTileButton "が" ""
-            ]
+type alias MultiChoiceOption =
+    { label : String
+    , correct : Bool
+    }
+
+
+popupChoiceOptions : List MultiChoiceOption -> PopupChoiceConfig -> Html Msg
+popupChoiceOptions options config =
+    let
+        toOptionElement : MultiChoiceOption -> Html Msg
+        toOptionElement =
+            \option ->
+                squareTileButton option.label "mr-2" <|
+                    if option.correct then
+                        config.correct
+
+                    else
+                        config.incorrect
+
+        options_ =
+            List.map toOptionElement options
+    in
+    div [ class "absolute top-0 flex w-[500px]", style "top" "-67px", style "left" "-51px" ] options_
+
+
+type alias PopupChoiceConfig =
+    { text : String
+    , correct : Msg
+    , incorrect : Msg
+    }
+
+
+defaultPopupChoiceConfig =
+    { text = "", correct = Correct, incorrect = InCorrect }
+
+
+popupChoice : List MultiChoiceOption -> PopupChoiceConfig -> Html Msg
+popupChoice options config =
+    div [ class "flex text-2xl items-center" ]
+        [ text config.text
+        , div [ class "relative border-4 border-blue-400 h-12 w-12" ] [ popupChoiceOptions options config ]
         ]
 
 
@@ -106,9 +161,9 @@ quiz =
     div [ class "flex flex-wrap justify-center" ]
         [ img [ class "", src "https://www.saysinter.com/reform/column/wp-content/uploads/2016/02/No019_img02.png" ] []
         , div [ class "w-full flex justify-center mt-20 text-2xl items-center" ]
-            [ text "ドア"
-            , popupChoice
-            , text ""
+            [ text "彼女はドア"
+            , popupChoice [ { label = "が", correct = False }, { label = "を", correct = True } ] defaultPopupChoiceConfig
+            , popupChoice [ { label = "かる", correct = False }, { label = "ける", correct = True } ] { text = "開", correct = Correct, incorrect = InCorrect }
             ]
         ]
 
